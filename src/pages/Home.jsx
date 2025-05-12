@@ -8,8 +8,8 @@ const Home = () => {
     useEffect(() => {
         const fetchPets = async () => {
             try {
-                const response = await axios.get('https://mockapi.io/api/v1/pets');
-                setPets(response.data.slice(0, 3)); // Pega os 3 pets mais recentes
+                const response = await axios.get('https://68224562b342dce8004dbb6d.mockapi.io/api/v1');
+                setPets(response.data.slice(0, 3)); 
             } catch (error) {
                 console.error('Erro ao buscar pets:', error);
             }

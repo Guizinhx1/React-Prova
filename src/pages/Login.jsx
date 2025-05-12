@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import './Login.css';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://mockapi.io/api/v1/login', { email, password });
+            const response = await axios.post('https://68224562b342dce8004dbb6d.mockapi.io/api/v1/login', { email, password });
             setAuth({ token: response.data.token, user: response.data.user });
             navigate('/dashboard');
         } catch (error) {
@@ -21,15 +22,15 @@ const Login = () => {
     };
 
     return (
-        <form onSubmit={handleLogin}>
-            <input
+        <form onSubmit={handleLogin} className='login-container form'>
+            <input className='login-container input[type="email"]'
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
                 required
             />
-            <input
+            <input className='login-container input[type="password"]'
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

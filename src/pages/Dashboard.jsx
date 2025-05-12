@@ -9,7 +9,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchPets = async () => {
             try {
-                const response = await axios.get('https://mockapi.io/api/v1/pets', {
+                const response = await axios.get('https://68224562b342dce8004dbb6d.mockapi.io/api/v1/pets', {
                     headers: { Authorization: `Bearer ${auth.token}` }
                 });
                 setPets(response.data);
@@ -22,13 +22,13 @@ const Dashboard = () => {
     }, [auth.token]);
 
     const handleLogout = () => {
- setAuth(null); // Limpa o contexto
-        window.location.href = '/login'; // Redireciona para a página de login
+ setAuth(null); 
+        window.location.href = '/login'; 
     };
 
     return (
         <div>
-            <h1>Olá, {auth.user.name}!</h1>
+            <h1>Olá!</h1>
             <button onClick={handleLogout}>Sair</button>
             <div>
                 {pets.map((pet) => (
@@ -52,12 +52,12 @@ const PetCard = ({ pet }) => {
     }, []);
 
     return (
-        <div>
+        <div className='pet-card p'>
             <h2>{pet.name}</h2>
-            <p>Raça: {pet.breed}</p>
+            <p className='pet-card p'>Raça: {pet.breed}</p>
             <p>Idade: {pet.age}</p>
             <p>Tutor: {pet.owner}</p>
-            {dogImage && <img src={dogImage} alt="Cachorro" />}
+            {dogImage && <img src={dogImage} className='pet-card img' alt="Cachorro" />}
         </div>
     );
 };
